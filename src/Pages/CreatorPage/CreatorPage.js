@@ -1,9 +1,10 @@
 import React from 'react';
+import Banner from '../Banner/Banner';
 
 const CreatorPage = () => {
     return (
         <div>
-            <h1>Welcome!</h1>
+            <Banner></Banner>
         </div>
     );
 };
