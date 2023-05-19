@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 const Videos = () => {
-    const [images, setImages] = useState([]);
+    const [vids, setVids] = useState([]);
 
   useEffect(() => {
-    fetch("img.json")
+    fetch("vid.json")
       .then((res) => res.json())
-      .then((data) => setImages(data));
+      .then((data) => setVids(data));
   }, []);
     return (
         <div>
-            <h1 className='text-4xl'> Videos</h1>
             <div 
             className='
             grid 
@@ -19,7 +18,7 @@ const Videos = () => {
             mt-9 
             px-6 md:px-10 lg:px-28 
             overflow-hidden'>
-                {images.map((image, i) => (
+                {vids.map((vid, i) => (
                     <div 
                     key={i} 
                     className='
@@ -29,14 +28,16 @@ const Videos = () => {
                     overflow-hidden 
                     mx-auto 
                     mb-6 '>
-                        <img 
-                        className='
+                        {/* <video className='
                         max-w-full 
-                        h-auto ' 
-                        src={image.img} 
-                        alt="" />
+                        h-auto ' src={vid.vid} controls>
+                        </video> */}
+                        <video
+                        src={vid.vid}
+                        className="w-full h-full object-cover"
+                        controls
+                    ></video>
                     </div>
-            
             ))} 
             </div>
         </div>

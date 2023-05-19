@@ -11,7 +11,6 @@ const Photos = () => {
 
     return (
         <div>
-            <h1 className='text-4xl'>Photos</h1>
             <div 
             className='
             grid 
