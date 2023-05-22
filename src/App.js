@@ -16,8 +16,7 @@ function App() {
         <Route path='/signin' element={<Signin></Signin>}></Route>        
           <Route path='/creatorform' element={<RequiredAuth><CreatorForm></CreatorForm></RequiredAuth>}></Route>        
           <Route path='/user/:userId' element={<RequiredAuth><CreatorPage></CreatorPage></RequiredAuth>}></Route>
-          {/* <Route path='/edit' element={<Editprofile></Editprofile>}></Route> */}
-          <Route path="/edit-profile/:userId" element={<Editprofile></Editprofile>} />
+          <Route path="/edit-profile/:userId" element={<Editprofile></Editprofile>} />          
           <Route path="/banner" element={<Banner></Banner>} />
         
       </Routes>

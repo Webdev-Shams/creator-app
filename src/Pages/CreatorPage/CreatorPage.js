@@ -5,6 +5,9 @@ import Photos from '../Posts/Photos';
 import insta from '../../Images/insta.png';
 import linked from '../../Images/linked.png';
 import tweet from '../../Images/tweet.png';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const CreatorPage = () => {
     const { userId } = useParams();
@@ -13,6 +16,11 @@ const CreatorPage = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const [imageURL, setImageURL] = useState('');
+    const [userF] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+    };
 
   
     useEffect(() => {
@@ -37,7 +45,7 @@ const CreatorPage = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setUser(data);
+          setUser({ ...user, name: data.name });
           setIsEditing(false);
         })
         .catch((error) => console.log(error));
@@ -90,30 +98,33 @@ const CreatorPage = () => {
         }}
       >
         <p className="text-left text-white text-[24px] mt-[20px] ml-[22px] font-[600]">
-          {isEditing ? (
+          {/* {isEditing ? (
             <input
               type="text"
               value={nameInput}
               onChange={handleNameInputChange}
+              placeholder={user.name}
+              className='text-black'
             />
           ) : (
-            user.name
+           
           )}
           {isEditing ? (
-          <button className='text-base ml-4 ' onClick={handleUpdateName}>Save</button>
+          <button className='text-base ml-4 inline-block bg-lime-300 px-6 ml-6 text-slate-900 rounded-sm' onClick={handleUpdateName}>Save</button>
         ) : (
-          <button className='text-base' onClick={() => setIsEditing(true)}>Edit</button>
-        )}
+          <button className='text-base inline-block bg-gray-300 px-6 ml-6 text-slate-900 rounded-sm' onClick={() => setIsEditing(true)}>Edit</button>
+        )} */}
+         {user.name}
         </p>
-        <div className="flex justify-end pt-[17px]">
-          <div className="w-[30px] h-[30px] mr-[25px]">
-            <Link><img src={linked} alt="" /></Link>
+        <div className='flex justify-end pt-[17px]'>
+          <div className='w-[30px] h-[30px] mr-[25px]'>
+              <Link to={user.socialMedia && user.socialMedia.linkedin ? (user.socialMedia.linkedin) : null}><img src={linked} alt="" /></Link>
           </div>
-          <div className="w-[30px] h-[30px] mr-[25px]">
-            <Link><img src={tweet} alt="" /></Link>
+          <div className='w-[30px] h-[30px] mr-[25px]'>
+          <Link to={user.socialMedia && user.socialMedia.twitter ? (user.socialMedia.twitter) : null}><img src={tweet} alt="" /></Link>
           </div>
-          <div className="w-[30px] h-[30px] mr-[25px]">
-            <Link><img src={insta} alt="" /></Link>
+          <div className='w-[30px] h-[30px] mr-[25px]'>
+          <Link to={user.socialMedia && user.socialMedia.instagram ? (user.socialMedia.instagram) : null}><img src={insta} alt="" /></Link>
           </div>
         </div>
       </div>
@@ -121,8 +132,16 @@ const CreatorPage = () => {
             <div className="w-[200px] h-[200px] bg-slate-900 rounded-full mx-auto mt-[-115px] drop-shadow-[0px_0px_5px_rgba(0,0,0,1) overflow-hidden]">
                 <img className='rounded-full' src={user.propic} alt="" />
             </div>
-            <input type="file" onChange={handleImageUpload} />
-            <button onClick={handleSaveImage}>save</button>
+            {/* <input type="file" onChange={handleImageUpload} />
+            <button onClick={handleSaveImage}>save</button> */}
+            <div className='grid grid-cols-2 w-[220px] mx-auto'>
+              <Link to={`/edit-profile/${userId}`}>
+                <p className='text-base mt-4 border-white border-2 w-[100px] mx-auto bg-white text-black'>Edit Profile</p>
+              </Link>
+              <Link to="/">
+                <button onClick={logout} className='text-base mt-4 border-white border-2 w-[100px] mx-auto'>Sign Out</button>
+              </Link>
+            </div>
         </div>
 
       <div>
