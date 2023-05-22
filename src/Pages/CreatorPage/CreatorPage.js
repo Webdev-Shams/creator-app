@@ -24,7 +24,7 @@ const CreatorPage = () => {
 
   
     useEffect(() => {
-      const url = `http://localhost:5000/user/${userId}`;
+      const url = `https://smith-server.vercel.app/user/${userId}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setUser(data));
@@ -35,7 +35,7 @@ const CreatorPage = () => {
     };
   
     const handleUpdateName = () => {
-      const url = `http://localhost:5000/user/${userId}`;
+      const url = `https://smith-server.vercel.app/user/${userId}`;
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -62,7 +62,7 @@ const CreatorPage = () => {
           const formData = new FormData();
           formData.append('image', imageFile);
       
-          fetch(`http://localhost:5000/user/${userId}`, {
+          fetch(`https://smith-server.vercel.app/user/${userId}`, {
             method: 'PUT',
             headers: {
           'Content-Type': 'application/json',

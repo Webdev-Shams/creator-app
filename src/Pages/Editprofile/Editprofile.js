@@ -14,7 +14,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     // Fetch user data from the server
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUser(data));
@@ -39,7 +39,7 @@ const EditProfile = () => {
     };
 
     // Send updated user information to the server
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url, {
       method: 'PUT',
       headers: {
