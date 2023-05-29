@@ -10,7 +10,7 @@ const Photos = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -33,7 +33,7 @@ const Photos = () => {
       formData.append('images', image);
     });
   
-    fetch('http://localhost:5000/user/upload/images', {
+    fetch('https://smith-server.vercel.app/user/upload/images', {
       method: 'PUT',
       body: formData,
     })
@@ -55,7 +55,7 @@ const Photos = () => {
     const { image, index } = fullScreenImage;
   
     // Delete the image from the server
-    fetch(`http://localhost:5000/uploads/image/${image}`, {
+    fetch(`https://smith-server.vercel.app/uploads/image/${image}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -99,7 +99,7 @@ const Photos = () => {
             >
               <img
                 className='max-w-full h-auto'
-                src={`http://localhost:5000/uploads/${image}`}
+                src={`https://smith-server.vercel.app/uploads/${image}`}
                 alt=''
               />
             </div>
@@ -114,7 +114,7 @@ const Photos = () => {
     <div className='relative'>
       <img
         className='max-h-screen'
-        src={`http://localhost:5000/uploads/${fullScreenImage.image}`}
+        src={`https://smith-server.vercel.app/uploads/${fullScreenImage.image}`}
         alt=''
       />
       <div className='absolute top-4 right-4 flex space-x-2'>

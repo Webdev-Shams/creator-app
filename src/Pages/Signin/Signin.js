@@ -12,7 +12,7 @@ const Signin = () => {
   useEffect(() => {
     const checkUserRedirect = async () => {
       if (user) {
-        const url = `http://localhost:5000/users?email=${user.email}`;
+        const url = `https://smith-server.vercel.app/users?email=${user.email}`;
         try {
           const response = await fetch(url);
           const result = await response.json();

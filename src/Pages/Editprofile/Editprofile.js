@@ -16,7 +16,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     // Fetch user data from the server
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -62,7 +62,7 @@ const EditProfile = () => {
     formData.append('data', JSON.stringify(updatedData));
   
     // Send updated user information along with the profile and cover images to the server
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url, {
       method: 'PUT',
       body: formData,
