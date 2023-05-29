@@ -9,7 +9,7 @@ const Photos = () => {
 
     
     useEffect(() => {
-        const url = `http://localhost:5000/user/${userId}`;
+        const url = `https://smith-server.vercel.app/user/${userId}`;
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
@@ -32,7 +32,7 @@ const Photos = () => {
         formData.append('images', image);
       });
     
-      fetch('http://localhost:5000/user/upload/images', {
+      fetch('https://smith-server.vercel.app/user/upload/images', {
         method: 'PUT',
         body: formData,
       })
@@ -55,7 +55,7 @@ const Photos = () => {
               className='max-w-[300px] md:max-w-[300px] lg:max-w-[370px] max-h-[300px] md:max-h-[300px] lg:max-h-[370px] aspect-square overflow-hidden mx-auto mb-6'>
               <img
                 className='max-w-full h-auto'
-                src={`http://localhost:5000/uploads/${image}`}
+                src={`https://smith-server.vercel.app/uploads/${image}`}
                 alt=''
               />
             </div>

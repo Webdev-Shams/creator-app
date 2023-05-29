@@ -22,7 +22,7 @@ const CreatorForm = () => {
       }
 
     const onSubmit = (data) => {
-        const url = "http://localhost:5000/user";
+        const url = "https://smith-server.vercel.app/user";
         fetch(url, {
           method: 'POST',
           headers: {

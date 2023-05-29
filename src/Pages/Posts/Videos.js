@@ -9,7 +9,7 @@ const Videos = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/user/${userId}`;
+        const url = `https://smith-server.vercel.app/user/${userId}`;
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
@@ -33,7 +33,7 @@ const Videos = () => {
           formData.append('videos', video);
         });
       
-        fetch('http://localhost:5000/user/upload/videos', {
+        fetch('https://smith-server.vercel.app/user/upload/videos', {
           method: 'PUT',
           body: formData,
         })
@@ -55,7 +55,7 @@ const Videos = () => {
                     key={i}
                     className='max-w-[300px] md:max-w-[300px] lg:max-w-[370px] max-h-[300px] md:max-h-[300px] lg:max-h-[370px] aspect-square overflow-hidden mx-auto mb-6'>
                     <video
-                        src={`http://localhost:5000/uploads/${vid}`}
+                        src={`https://smith-server.vercel.app/uploads/${vid}`}
                         className='w-full h-full object-cover'
                         controls
                     ></video>

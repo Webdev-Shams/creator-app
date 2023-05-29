@@ -25,7 +25,7 @@ const CreatorPage = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/user/${userId}`;
+    const url = `https://smith-server.vercel.app/user/${userId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -64,7 +64,7 @@ if (!user) {
       <div
         className="cover h-[330px] bg-slate-900 grid grid-cols-2"
         style={{
-          backgroundImage: `url(http://localhost:5000/uploads/${user.coverImage})`,
+          backgroundImage: `url(https://smith-server.vercel.app/uploads/${user.coverImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
@@ -111,7 +111,7 @@ if (!user) {
       </div>
       <div className="proPic">
         <div className="w-[200px] h-[200px] bg-slate-900 rounded-full mx-auto mt-[-115px] drop-shadow-[0px_5px_5px_rgba(0,0,0,0.75)] overflow-hidden]">
-          <img className="rounded-full" src={`http://localhost:5000/uploads/${user.profileImage}`} alt="" />
+          <img className="rounded-full" src={`https://smith-server.vercel.app/uploads/${user.profileImage}`} alt="" />
         </div>
         <div className="grid grid-cols-2 w-[220px] mx-auto">
           <Link to={`/edit-profile/${userId}`}>
@@ -193,7 +193,7 @@ export default CreatorPage;
 
   
 //     useEffect(() => {
-//       const url = `http://localhost:5000/user/${userId}`;
+//       const url = `https://smith-server.vercel.app/user/${userId}`;
 //       fetch(url)
 //         .then((res) => res.json())
 //         .then((data) => setUser(data));
