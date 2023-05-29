@@ -6,6 +6,7 @@ import Photos from '../Posts/Photos';
 import insta from '../../Images/insta.png';
 import linked from '../../Images/linked.png';
 import tweet from '../../Images/tweet.png';
+import arrow from '../../Images/uparrow.png';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -51,8 +52,15 @@ if (!user) {
     setOn(!on);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <div className="h-screen text-white">
+    <div className="min-h-screen text-white">
       <div
         className="cover h-[330px] bg-slate-900 grid grid-cols-2"
         style={{
@@ -102,7 +110,7 @@ if (!user) {
         </div>
       </div>
       <div className="proPic">
-        <div className="w-[200px] h-[200px] bg-slate-900 rounded-full mx-auto mt-[-115px] drop-shadow-[0px_0px_5px_rgba(0,0,0,1) overflow-hidden]">
+        <div className="w-[200px] h-[200px] bg-slate-900 rounded-full mx-auto mt-[-115px] drop-shadow-[0px_5px_5px_rgba(0,0,0,0.75)] overflow-hidden]">
           <img className="rounded-full" src={`http://localhost:5000/uploads/${user.profileImage}`} alt="" />
         </div>
         <div className="grid grid-cols-2 w-[220px] mx-auto">
@@ -146,6 +154,14 @@ if (!user) {
           </a>
         </div>
         {on ? <Videos /> : <Photos />}
+      </div>
+      <div className='fixed bottom-6 right-4'>
+        <button
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full'
+          onClick={scrollToTop}
+        >
+          <img src={arrow} alt="" className='w-[20px] py-1' />
+        </button>
       </div>
     </div>
   );
