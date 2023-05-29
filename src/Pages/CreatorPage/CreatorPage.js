@@ -155,7 +155,7 @@ if (!user) {
         </div>
         {on ? <Videos /> : <Photos />}
       </div>
-      <div className='fixed bottom-6 right-4'>
+      <div className='fixed bottom-[100px] sm:bottom-[100px] md:bottom-6 right-4'>
         <button
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full'
           onClick={scrollToTop}
